@@ -9,6 +9,7 @@ import com.example.pharmacy.service.UserService;
 import com.example.pharmacy.service.impl.UserServiceImpl;
 import com.example.pharmacy.util.Role;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +23,7 @@ import static com.example.pharmacy.command.constant.PageName.REGISTRATION_PAGE;
 import static com.example.pharmacy.command.constant.RequestAttributeName.FAILED;
 import static com.example.pharmacy.command.constant.RequestAttributeName.USER;
 import static com.example.pharmacy.command.constant.RequestParameterName.*;
+import static com.example.pharmacy.command.constant.SessionAttributeName.USER_NAME;
 
 public class SignUpCommand implements Command {
     public static final String DATE_FORMAT = "dd-MM-yyyy";
@@ -50,7 +52,8 @@ public class SignUpCommand implements Command {
                 int userId = userService.createUser(user);
                 Credentials credentials = Credentials.newBuilder().setLogin(login).setPassword(password).setUserId(userId).setRole(Role.CUSTOMER).build();
                 userService.createCredentials(credentials);
-                request.setAttribute(USER, firstName);
+                HttpSession session = request.getSession();
+                session.setAttribute(USER_NAME, firstName);
                 page = MAIN_PAGE;
             } else {
                 logger.info(String.format("There is already a user mit login '%s", login));

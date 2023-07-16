@@ -1,14 +1,12 @@
 package com.example.pharmacy.command;
 
-import com.example.pharmacy.command.impl.DefaultCommand;
-import com.example.pharmacy.command.impl.LoginCommand;
-import com.example.pharmacy.command.impl.LogoutCommand;
-import com.example.pharmacy.command.impl.SignUpCommand;
+import com.example.pharmacy.command.impl.*;
 
 public enum CommandType {
     LOGIN(new LoginCommand()),
     LOGOUT(new LogoutCommand()),
     SIGNUP(new SignUpCommand()),
+    READ_ALL_MEDICINES (new ReadAllMedicinesCommand()),
     DEFAULT(new DefaultCommand());
     Command command;
 
@@ -20,7 +18,7 @@ public enum CommandType {
         Command command;
         if (commandStr != null) {
             try {
-                CommandType commandType = CommandType.valueOf(commandStr.toUpperCase());
+                CommandType commandType = CommandType.valueOf(commandStr.toUpperCase().replace("_", ""));
                 command = commandType.command;
             } catch (IllegalArgumentException e) {
                 command = DEFAULT.command;

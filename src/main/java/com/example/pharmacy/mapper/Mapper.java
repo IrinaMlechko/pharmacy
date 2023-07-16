@@ -1,14 +1,17 @@
 package com.example.pharmacy.mapper;
 
 import com.example.pharmacy.entity.Credentials;
+import com.example.pharmacy.entity.Medicine;
 import com.example.pharmacy.entity.User;
 import com.example.pharmacy.util.Role;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Mapper {
     public static User mapUserFromResultSet(ResultSet resultSet) throws SQLException {
@@ -65,5 +68,43 @@ public class Mapper {
         statement.setString(2, credentials.getPassword());
         statement.setObject(3, credentials.getRole(), Types.OTHER);
         statement.setInt(4, credentials.getUserId());
+    }
+
+    public static Medicine mapMedicineFromResultSet(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt(DBFields.MEDICINE_ID);
+        String name = resultSet.getString(DBFields.MEDICINE_NAME);
+        String manufacturer = resultSet.getString(DBFields.MEDICINE_MANUFACTURER);
+        BigDecimal price = resultSet.getBigDecimal(DBFields.MEDICINE_PRICE);
+        String description = resultSet.getString(DBFields.MEDICINE_DESCRIPTION);
+        LocalDateTime createdAt = resultSet.getTimestamp(DBFields.MEDICINE_CREATED_AT).toLocalDateTime();
+        boolean prescriptionRequired = resultSet.getBoolean(DBFields.MEDICINE_PRESCRIPTION_REQUIRED);
+        return Medicine.newBuilder()
+                .setId(id)
+                .setName(name)
+                .setManufacturer(manufacturer)
+                .setPrice(price)
+                .setDescription(description)
+                .setCreatedAt(createdAt)
+                .setPrescriptionRequired(prescriptionRequired)
+                .build();
+    }
+
+    public static void mapMedicineToResultSet(Medicine medicine, ResultSet resultSet) throws SQLException {
+        resultSet.updateInt(DBFields.MEDICINE_ID, medicine.getId());
+        resultSet.updateString(DBFields.MEDICINE_NAME, medicine.getName());
+        resultSet.updateString(DBFields.MEDICINE_MANUFACTURER, medicine.getManufacturer());
+        resultSet.updateBigDecimal(DBFields.MEDICINE_PRICE, medicine.getPrice());
+        resultSet.updateString(DBFields.MEDICINE_DESCRIPTION, medicine.getDescription());
+        resultSet.updateTimestamp(DBFields.MEDICINE_CREATED_AT, java.sql.Timestamp.valueOf(medicine.getCreatedAt()));
+        resultSet.updateBoolean(DBFields.MEDICINE_PRESCRIPTION_REQUIRED, medicine.isPrescriptionRequired());
+    }
+
+    public static void mapMedicineToStatement(Medicine medicine, PreparedStatement statement) throws SQLException {
+        statement.setString(1, medicine.getName());
+        statement.setString(2, medicine.getManufacturer());
+        statement.setBigDecimal(3, medicine.getPrice());
+        statement.setString(4, medicine.getDescription());
+        statement.setTimestamp(5, java.sql.Timestamp.valueOf(medicine.getCreatedAt()));
+        statement.setBoolean(6, medicine.isPrescriptionRequired());
     }
 }

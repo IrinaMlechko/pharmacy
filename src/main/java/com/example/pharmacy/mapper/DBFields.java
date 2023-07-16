@@ -11,4 +11,12 @@ public class DBFields {
     public static final String CREDENTIALS_PASSWORD = "password";
     public static final String CREDENTIALS_ROLE= "role";
     public static final String CREDENTIALS_USER_ID = "user_id";
+
+    public static final String MEDICINE_ID = "id";
+    public static final String MEDICINE_NAME = "medicine_name";
+    public static final String MEDICINE_MANUFACTURER = "manufacturer";
+    public static final String MEDICINE_PRICE = "price";
+    public static final String MEDICINE_DESCRIPTION = "description";
+    public static final String MEDICINE_CREATED_AT = "created_at";
+    public static final String MEDICINE_PRESCRIPTION_REQUIRED = "prescription_required";
 }
