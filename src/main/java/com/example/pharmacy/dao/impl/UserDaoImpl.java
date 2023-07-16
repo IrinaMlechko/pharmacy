@@ -20,7 +20,7 @@ import java.util.Optional;
 public class UserDaoImpl implements UserDao, BaseDao<Integer, Credentials> {
     static Logger logger = LogManager.getLogger();
     private static final String SELECT_PASSWORD = "SELECT password FROM pharmacy.credentials WHERE login = ?";
-    private static final String SELECT_FIRST_NAME = "SELECT first_name FROM pharmacy.users us JOIN web.credentials cred ON us.id = cred.user_id WHERE login = ?";
+    private static final String SELECT_FIRST_NAME = "SELECT first_name FROM pharmacy.users us JOIN pharmacy.credentials cred ON us.id = cred.user_id WHERE login = ?";
     private static final String SELECT_LOGIN = "SELECT login FROM pharmacy.credentials WHERE login = ?";
     private static final String INSERT_USER = "INSERT INTO pharmacy.users (first_name, last_name, date_of_birth) VALUES (?, ?, ?)";
     private static final String INSERT_CREDENTIALS = "INSERT INTO pharmacy.credentials (login, password, role, user_id) VALUES (?, ?, ?, ?)";

@@ -9,5 +9,6 @@ public class DBFields {
     public static final String CREDENTIALS_ID = "id";
     public static final String CREDENTIALS_LOGIN = "login";
     public static final String CREDENTIALS_PASSWORD = "password";
+    public static final String CREDENTIALS_ROLE= "role";
     public static final String CREDENTIALS_USER_ID = "user_id";
 }

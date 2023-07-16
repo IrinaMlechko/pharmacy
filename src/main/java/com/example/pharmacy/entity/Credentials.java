@@ -1,10 +1,13 @@
 package com.example.pharmacy.entity;
 
+import com.example.pharmacy.util.Role;
+
 import java.util.Objects;
 
 public class Credentials extends BaseEntity{
     private String login;
     private String password;
+    private Role role;
     private int userId;
 
     private Credentials() {
@@ -17,6 +20,10 @@ public class Credentials extends BaseEntity{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     public String getPassword() {
@@ -37,7 +44,8 @@ public class Credentials extends BaseEntity{
 
         if (userId != that.userId) return false;
         if (!Objects.equals(login, that.login)) return false;
-        return Objects.equals(password, that.password);
+        if (!Objects.equals(password, that.password)) return false;
+        return role == that.role;
     }
 
     @Override
@@ -45,6 +53,7 @@ public class Credentials extends BaseEntity{
         int result = super.hashCode();
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + userId;
         return result;
     }
@@ -54,6 +63,7 @@ public class Credentials extends BaseEntity{
         final StringBuilder sb = new StringBuilder("Credentials{");
         sb.append("login='").append(login).append('\'');
         sb.append(", password='").append(password).append('\'');
+        sb.append(", role=").append(role);
         sb.append(", userId=").append(userId);
         sb.append('}');
         return sb.toString();
@@ -82,7 +92,10 @@ public class Credentials extends BaseEntity{
             Credentials.this.password = password;
             return this;
         }
-
+        public Credentials.Builder setRole(Role role) {
+            Credentials.this.role = role;
+            return this;
+        }
         public Credentials.Builder setUserId(int userId) {
             Credentials.this.userId = userId;
             return this;

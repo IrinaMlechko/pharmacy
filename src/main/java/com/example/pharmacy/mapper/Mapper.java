@@ -2,10 +2,12 @@ package com.example.pharmacy.mapper;
 
 import com.example.pharmacy.entity.Credentials;
 import com.example.pharmacy.entity.User;
+import com.example.pharmacy.util.Role;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.time.LocalDate;
 
 public class Mapper {
@@ -26,11 +28,13 @@ public class Mapper {
         int id = resultSet.getInt(DBFields.CREDENTIALS_ID);
         String login = resultSet.getString(DBFields.CREDENTIALS_LOGIN);
         String password = resultSet.getString(DBFields.CREDENTIALS_PASSWORD);
+        Role role = Role.valueOf(resultSet.getString(DBFields.CREDENTIALS_ROLE));
         int userId = resultSet.getInt(DBFields.CREDENTIALS_USER_ID);
         return Credentials.newBuilder()
                 .setId(id)
                 .setLogin(login)
                 .setPassword(password)
+                .setRole(role)
                 .setUserId(userId)
                 .build();
     }
@@ -46,6 +50,7 @@ public class Mapper {
         resultSet.updateInt(DBFields.CREDENTIALS_ID, credentials.getId());
         resultSet.updateString(DBFields.CREDENTIALS_LOGIN, credentials.getLogin());
         resultSet.updateString(DBFields.CREDENTIALS_PASSWORD, credentials.getPassword());
+        resultSet.updateString(DBFields.CREDENTIALS_ROLE, credentials.getRole().toString());
         resultSet.updateInt(DBFields.CREDENTIALS_USER_ID, credentials.getUserId());
     }
 
@@ -58,6 +63,7 @@ public class Mapper {
     public static void mapCredentialsToStatement(Credentials credentials, PreparedStatement statement) throws SQLException {
         statement.setString(1, credentials.getLogin());
         statement.setString(2, credentials.getPassword());
-        statement.setInt(3, credentials.getUserId());
+        statement.setObject(3, credentials.getRole(), Types.OTHER);
+        statement.setInt(4, credentials.getUserId());
     }
 }

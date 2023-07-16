@@ -7,6 +7,7 @@ import com.example.pharmacy.exception.CommandException;
 import com.example.pharmacy.exception.ServiceException;
 import com.example.pharmacy.service.UserService;
 import com.example.pharmacy.service.impl.UserServiceImpl;
+import com.example.pharmacy.util.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,7 +48,7 @@ public class SignUpCommand implements Command {
                 }
                 User user = User.newBuilder().setFirstName(firstName).setLastName(lastName).setDateOfBirth(dateOfBirth).build();
                 int userId = userService.createUser(user);
-                Credentials credentials = Credentials.newBuilder().setLogin(login).setPassword(password).setUserId(userId).build();
+                Credentials credentials = Credentials.newBuilder().setLogin(login).setPassword(password).setUserId(userId).setRole(Role.CUSTOMER).build();
                 userService.createCredentials(credentials);
                 request.setAttribute(USER, firstName);
                 page = MAIN_PAGE;
