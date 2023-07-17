@@ -1,7 +1,6 @@
 package com.example.pharmacy.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -13,8 +12,12 @@ public class Medicine extends BaseEntity {
     private LocalDateTime createdAt;
     private boolean prescriptionRequired;
 
-    private Medicine(){
+    private Medicine() {
         super();
+    }
+
+    public static Builder newBuilder() {
+        return new Medicine().new Builder();
     }
 
     public String getName() {
@@ -84,9 +87,6 @@ public class Medicine extends BaseEntity {
         return sb.toString();
     }
 
-    public static Builder newBuilder() {
-        return new Medicine().new Builder();
-    }
     public class Builder {
 
         private Builder() {

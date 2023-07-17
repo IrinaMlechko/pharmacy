@@ -37,17 +37,11 @@ public class SignUpCommand implements Command {
         String firstName = request.getParameter(FIRST_NAME);
         String lastName = request.getParameter(LAST_NAME);
         String dateOfBirthStr = request.getParameter(DATE_OF_BIRTH);
-        UserService userService = UserServiceImpl.getInstance();
         String page;
         try {
             if (!userService.existsByLogin(login)) {
                 LocalDate dateOfBirth;
-                try {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-                    dateOfBirth = LocalDate.parse(dateOfBirthStr, formatter);
-                } catch (DateTimeParseException e) {
-                    throw new CommandException(e);
-                }
+                dateOfBirth = getLocalDate(dateOfBirthStr);
                 User user = User.newBuilder().setFirstName(firstName).setLastName(lastName).setDateOfBirth(dateOfBirth).build();
                 int userId = userService.createUser(user);
                 Credentials credentials = Credentials.newBuilder().setLogin(login).setPassword(password).setUserId(userId).setRole(Role.CUSTOMER).build();
@@ -64,5 +58,16 @@ public class SignUpCommand implements Command {
             throw new CommandException(e);
         }
         return page;
+    }
+
+    private static LocalDate getLocalDate(String dateOfBirthStr) throws CommandException {
+        LocalDate dateOfBirth;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+            dateOfBirth = LocalDate.parse(dateOfBirthStr, formatter);
+        } catch (DateTimeParseException e) {
+            throw new CommandException(e);
+        }
+        return dateOfBirth;
     }
 }

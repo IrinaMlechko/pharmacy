@@ -19,4 +19,6 @@ public class DBFields {
     public static final String MEDICINE_DESCRIPTION = "description";
     public static final String MEDICINE_CREATED_AT = "created_at";
     public static final String MEDICINE_PRESCRIPTION_REQUIRED = "prescription_required";
+
+    private DBFields(){}
 }

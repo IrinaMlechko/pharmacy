@@ -21,12 +21,12 @@ import static com.example.pharmacy.command.constant.RequestParameterName.COMMAND
 @WebServlet(name = "controller", urlPatterns = "/controller")
 public class Controller extends HttpServlet {
     static Logger logger = LogManager.getLogger();
-
+    @Override
     public void init() {
         ConnectionPool.getInstance();
         logger.info("Init servlet" + this.getServletInfo());
     }
-
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
@@ -53,7 +53,7 @@ public class Controller extends HttpServlet {
         request.setAttribute(ERROR_MSG, errorMsg);
         request.getRequestDispatcher(SERVER_ERROR_PAGE).forward(request, response);
     }
-
+    @Override
     public void destroy() {
         ConnectionPool.getInstance().destroyPool();
         logger.info("Servlet destroyed" + this.getServletName());

@@ -14,6 +14,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Mapper {
+
+    private Mapper(){}
     public static User mapUserFromResultSet(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt(DBFields.USER_ID);
         String firstName = resultSet.getString(DBFields.USER_FIRST_NAME);

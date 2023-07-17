@@ -5,6 +5,7 @@ import com.example.pharmacy.util.PropertiesStreamReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,8 +40,8 @@ public class ConnectionPool {
     }
 
     private ConnectionPool() {
-        try {
-            properties.load(new FileReader(propertiesStreamReader.getFileFromResource(PROPERTIES_FILE_NAME).toFile()));
+        try (FileReader file = new FileReader(propertiesStreamReader.getFileFromResource(PROPERTIES_FILE_NAME).toFile())){
+            properties.load(file);
         } catch (IOException | ServiceException e) {
             logger.fatal("Error loading properties file: " + e.getMessage());
             throw new ExceptionInInitializerError(e);
@@ -94,8 +95,8 @@ public class ConnectionPool {
             try {
                 connections.take().reallyClose();
             } catch (InterruptedException e) {
-                logger.fatal("Error by closing connections: " + e.getMessage());
-                throw new ExceptionInInitializerError(e);
+                logger.warn("Error by closing connections: " + e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
 

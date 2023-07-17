@@ -1,6 +1,7 @@
 package com.example.pharmacy.command.constant;
 
 public class RequestParameterName {
+    private RequestParameterName(){}
     public static final String COMMAND = "command";
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
