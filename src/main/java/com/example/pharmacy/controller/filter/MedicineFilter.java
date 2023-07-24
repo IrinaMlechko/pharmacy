@@ -34,9 +34,7 @@ public class MedicineFilter implements Filter {
             ReadAllMedicinesCommand command = new ReadAllMedicinesCommand();
             String nextPage;
             try {
-                nextPage = command.execute(httpRequest);
-                httpRequest.getRequestDispatcher("main.jsp").forward(request, response);
-                return;
+                command.execute(httpRequest);
             } catch (CommandException e) {
                 //TODO
                 throw new RuntimeException(e);

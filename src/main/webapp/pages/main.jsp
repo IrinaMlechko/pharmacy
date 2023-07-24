@@ -79,9 +79,9 @@
             </tbody>
         </table>
     </c:if>
-    <c:if test="${empty medicines}">
-        <p class="no-medicines-message">No medicines found.</p>
-    </c:if>
+<%--    <c:if test="${empty medicines}">--%>
+<%--        <p class="no-medicines-message">No medicines found.</p>--%>
+<%--    </c:if>--%>
 </div>
 </body>
 </html>
