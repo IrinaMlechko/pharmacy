@@ -2,40 +2,49 @@ package com.example.pharmacy.controller.filter;
 
 import com.example.pharmacy.command.impl.ReadAllMedicinesCommand;
 import com.example.pharmacy.exception.CommandException;
+import com.example.pharmacy.util.AttributeCaptureRequestWrapper;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
+import static com.example.pharmacy.command.constant.PageName.INDEX_PAGE;
 import static com.example.pharmacy.command.constant.SessionAttributeName.USER_NAME;
 
-@WebFilter(dispatcherTypes = {DispatcherType.FORWARD },urlPatterns = "/main.jsp")
+@WebFilter(urlPatterns = {"/pages/main.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class MedicineFilter implements Filter {
+    private String indexPath;
+
+    static Logger logger = LogManager.getLogger();
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        logger.debug("----------> MedicineFilter init");
+        indexPath = filterConfig.getInitParameter("/pages/main.jsp");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        logger.debug("----------> MedicineFilter doFilter");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        HttpSession session = httpRequest.getSession(false);
+        HttpSession session = httpRequest.getSession();
         if (session != null && session.getAttribute(USER_NAME) != null) {
             ReadAllMedicinesCommand command = new ReadAllMedicinesCommand();
             String nextPage;
             try {
-                nextPage = command.execute(httpRequest);
+                command.execute(httpRequest);
+                httpResponse.sendRedirect(httpRequest.getContextPath() + indexPath);
             } catch (CommandException e) {
                 //TODO
                 throw new RuntimeException(e);
             }
-            httpResponse.sendRedirect(httpRequest.getContextPath() + nextPage);
-        } else {
-            chain.doFilter(request, response);
         }
+        chain.doFilter(request, response);
     }
 
     @Override
