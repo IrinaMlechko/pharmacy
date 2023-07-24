@@ -15,7 +15,8 @@ import java.io.IOException;
 
 import static com.example.pharmacy.command.constant.SessionAttributeName.USER_NAME;
 
-@WebFilter(urlPatterns = {"/pages/main.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+//@WebFilter(urlPatterns = {"/pages/main.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+@WebFilter(urlPatterns = {"/pages/main.jsp"}, dispatcherTypes = {DispatcherType.FORWARD})
 public class MedicineFilter implements Filter {
 
     static Logger logger = LogManager.getLogger();

@@ -11,6 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a51ddcb2-7b33-4e19-a809-69481a36da47" name="Changes" comment="24.07">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/main.jsp" afterDir="false" />
     </list>
@@ -149,7 +150,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689517439952</updated>
       <workItem from="1689517444101" duration="7421000" />
-      <workItem from="1690059077890" duration="11983000" />
+      <workItem from="1690059077890" duration="13033000" />
     </task>
     <task id="LOCAL-00001" summary="16.07">
       <option name="closed" value="true" />
@@ -191,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690212722647</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="24.07">
+      <option name="closed" value="true" />
+      <created>1690214480397</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690214480397</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +216,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java</url>
-          <line>33</line>
+          <line>34</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -227,23 +236,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/pages/main.jsp</url>
-          <line>70</line>
+          <line>71</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/pages/main.jsp</url>
-          <line>82</line>
+          <line>83</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/pages/main.jsp</url>
-          <line>59</line>
+          <line>60</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/pages/main.jsp</url>
-          <line>63</line>
+          <line>64</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/Controller.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/Controller.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
