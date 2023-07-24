@@ -9,15 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a51ddcb2-7b33-4e19-a809-69481a36da47" name="Changes" comment="16.07">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/util/AttributeCaptureRequestWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/main/main.jsp" afterDir="false" />
+    <list default="true" id="a51ddcb2-7b33-4e19-a809-69481a36da47" name="Changes" comment="24.07">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/HelloServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/command/constant/PageName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/command/constant/PageName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pharmacy/creator/ConnectionCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,23 +46,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/irynamlechka/IdeaProjects/pharmacy/pharmacy/src/main/webapp/pages/main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/irynamlechka/IdeaProjects/pharmacy/pharmacy/src/main/webapp/pages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/pages/main" />
@@ -154,7 +149,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689517439952</updated>
       <workItem from="1689517444101" duration="7421000" />
-      <workItem from="1690059077890" duration="8190000" />
+      <workItem from="1690059077890" duration="10280000" />
     </task>
     <task id="LOCAL-00001" summary="16.07">
       <option name="closed" value="true" />
@@ -180,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689587963212</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="24.07">
+      <option name="closed" value="true" />
+      <created>1690210501401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690210501402</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,14 +191,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="16.07" />
-    <option name="LAST_COMMIT_MESSAGE" value="16.07" />
+    <MESSAGE value="24.07" />
+    <option name="LAST_COMMIT_MESSAGE" value="24.07" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java</url>
-          <line>36</line>
+          <line>33</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -220,7 +224,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pharmacy/controller/filter/MedicineFilter.java</url>
-          <line>46</line>
+          <line>44</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

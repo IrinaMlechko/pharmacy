@@ -13,18 +13,15 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-import static com.example.pharmacy.command.constant.PageName.INDEX_PAGE;
 import static com.example.pharmacy.command.constant.SessionAttributeName.USER_NAME;
 
 @WebFilter(urlPatterns = {"/pages/main.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class MedicineFilter implements Filter {
-    private String indexPath;
 
     static Logger logger = LogManager.getLogger();
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         logger.debug("----------> MedicineFilter init");
-        indexPath = filterConfig.getInitParameter("/pages/main.jsp");
     }
 
     @Override
@@ -37,8 +34,9 @@ public class MedicineFilter implements Filter {
             ReadAllMedicinesCommand command = new ReadAllMedicinesCommand();
             String nextPage;
             try {
-                command.execute(httpRequest);
-                httpResponse.sendRedirect(httpRequest.getContextPath() + indexPath);
+                nextPage = command.execute(httpRequest);
+                httpRequest.getRequestDispatcher("main.jsp").forward(request, response);
+                return;
             } catch (CommandException e) {
                 //TODO
                 throw new RuntimeException(e);
